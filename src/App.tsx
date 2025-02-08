@@ -1,11 +1,11 @@
 import './App.css'
-import FeaturedCategoriesSection from './components/FeaturedCategories/FeaturedCategoriesSection'
+import Home from './pages/Home'
 
 function App() {
 
   return (
     <>
-      <FeaturedCategoriesSection></FeaturedCategoriesSection>
+      <Home/>
     </>
   )
 }
