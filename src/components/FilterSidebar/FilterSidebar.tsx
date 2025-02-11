@@ -33,7 +33,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({categories, onFilterChange
             <h2>Filters</h2>
             <SearchBar search={search} setSearch={setSearch} />
             <PriceFilter priceFrom={priceFrom} setPriceFrom={setPriceFrom} priceTo={priceTo} setPriceTo={setPriceTo} />
-            <CategoryFilter categories={categories} selectedCategoryIds={selectedCategoryIds} setSelectedCategoryIds={setSelectedCategoryIds} /> {/* Pass IDs */}
+            <CategoryFilter categories={categories} selectedCategoryIds={selectedCategoryIds} setSelectedCategoryIds={setSelectedCategoryIds} /> 
             <Button onClick={handleFilterChange} text="Apply Filters" />
         </div>
     );

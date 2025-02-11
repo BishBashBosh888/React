@@ -4,16 +4,16 @@ import { Category } from "../../types/category";
 type CategoryFilterProps = {
     categories: Category[];
     selectedCategoryIds: number[];
-    setSelectedCategoryIds: (categoryIds: number[]) => void;
+    setSelectedCategoryIds: React.Dispatch<React.SetStateAction<number[]>>
 }
 
 const CategoryFilter: React.FC<CategoryFilterProps> = ({categories, selectedCategoryIds, setSelectedCategoryIds}) =>{
     const handleCategoryChange = (categoryId: number) => {
-        setSelectedCategoryIds(prevSelected => {
+        setSelectedCategoryIds((prevSelected: number[]) => {
             if (prevSelected.includes(categoryId)) {
-                return prevSelected.filter(id => id !== categoryId); 
+                return prevSelected.filter((id: number) => id !== categoryId);
             }
-            return [...prevSelected, categoryId]; 
+            return [...prevSelected, categoryId];
         });
     };
 
