@@ -1,31 +1,29 @@
-// src/pages/Shop.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import ItemCatalog from '../components/ItemCatalog/ItemCatalog';
 import FilterSidebar from '../components/FilterSidebar/FilterSidebar';
+import { dummyCategories } from '../utils/dummyData';
 
 const Shop: React.FC = () => {
-    // const [filters, setFilters] = useState({
-    //     search: '',
-    //     priceFrom: '',
-    //     priceTo: '',
-    //     selectedCategories: [],
-    // });
+    const [filters, setFilters] = useState({
+        search: '',
+        priceFrom: "" as number | "",
+        priceTo: "" as number | "",
+        selectedCategoryIds: [] as number[],
+    });
 
     const handleFilterChange = (newFilters: {
         search: string;
         priceFrom: number | "";
         priceTo: number | "";
-        selectedCategories: string[];
+        selectedCategoryIds: number[];
     }) => {
         setFilters(newFilters);
     };
 
-    const categories = ["Electronics", "Clothing", "Books"];
-
     return (
         <div>
-            <FilterSidebar categories={categories} onFilterChange={handleFilterChange}/>
-            <ItemCatalog />
+            <FilterSidebar categories={dummyCategories} onFilterChange={handleFilterChange} /> 
+            <ItemCatalog filters={filters} /> 
         </div>
     );
 };

@@ -11,6 +11,8 @@ const ItemCard: React.FC<ItemProps> = ({ item }) => {
         <div>
             <img src="https://tinyurl.com/5d6mvpr5"/>
             <h3>{item.name}</h3>
+            <p>{item.description}</p>
+            <p>Price: ${item.price}</p>
             <Button text="View Item"/>
         </div>
     );

@@ -7,25 +7,26 @@ type PriceFilterProps = {
     setPriceTo: (value: number | "") => void;
 }
 
-const PriceFilter: React.FC<PriceFilterProps> = ({ priceFrom, setPriceFrom, priceTo, setPriceTo}) => (
-    <div>
-        <div>
-            <label>Price From</label>
-            <input 
-                type="number" 
-                value={priceFrom} 
-                onChange={(e)=>setPriceFrom(e.target.value ? Number(e.target.value) : "")}
-            />
-        </div>
-        <div>
-            <label>Price To</label>
-            <input
-                type="number"
-                value={priceTo}
-                onChange={(e)=> setPriceTo(e.target.value ? Number(e.target.value) : "")}
-            />
-        </div>
-    </div>
-)
+const PriceFilter: React.FC<PriceFilterProps> = ({ priceFrom, setPriceFrom, priceTo, setPriceTo }) => {
+    return (
+      <div>
+        <label htmlFor="priceFrom">Price From:</label>
+        <input
+          type="number" 
+          id="priceFrom"
+          value={priceFrom}
+          onChange={(e) => setPriceFrom(e.target.value === "" ? "" : Number(e.target.value))} 
+        />
+  
+        <label htmlFor="priceTo">Price To:</label>
+        <input
+          type="number"
+          id="priceTo"
+          value={priceTo}
+          onChange={(e) => setPriceTo(e.target.value === "" ? "" : Number(e.target.value))}
+        />
+      </div>
+    );
+  };
 
 export default PriceFilter;

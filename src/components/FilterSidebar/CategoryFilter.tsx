@@ -1,35 +1,37 @@
 import React from "react";
+import { Category } from "../../types/category";
 
 type CategoryFilterProps = {
-    categories: string[];
-    selectedCategories: string[];
-    setSelectedCategories: (categories: string[]) => void;
+    categories: Category[];
+    selectedCategoryIds: number[];
+    setSelectedCategoryIds: (categoryIds: number[]) => void;
 }
 
-const CategoryFilter: React.FC<CategoryFilterProps> = ({categories, selectedCategories, setSelectedCategories}) =>{
-    const handleCategoryChange = (category: string) => {
-        const newSelectedCategories = selectedCategories.includes(category)
-            ? selectedCategories.filter((c) => c !== category)
-            : [...selectedCategories, category];
-
-        setSelectedCategories(newSelectedCategories);
+const CategoryFilter: React.FC<CategoryFilterProps> = ({categories, selectedCategoryIds, setSelectedCategoryIds}) =>{
+    const handleCategoryChange = (categoryId: number) => {
+        setSelectedCategoryIds(prevSelected => {
+            if (prevSelected.includes(categoryId)) {
+                return prevSelected.filter(id => id !== categoryId); 
+            }
+            return [...prevSelected, categoryId]; 
+        });
     };
 
     return (
         <div>
             <h3>Categories</h3>
             {categories.map((category) => (
-                <label key={category} >
+                <label key={category.id}> 
                     <input
                         type="checkbox"
-                        checked={selectedCategories.includes(category)}
-                        onChange={() => handleCategoryChange(category)}
+                        checked={selectedCategoryIds.includes(category.id)} 
+                        onChange={() => handleCategoryChange(category.id)} 
                     />
-                    {category}
+                    {category.name}
                 </label>
             ))}
         </div>
-    )
+    );
 }
 
 export default CategoryFilter;

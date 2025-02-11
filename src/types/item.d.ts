@@ -3,6 +3,7 @@ export interface Item {
     name: string;   
     description: string;
     price: number;
-    createdAt: string; 
-    modifiedAt: string;  
+    created_at: string; 
+    modified_at: string;  
+    category_ids: number[];
 }
